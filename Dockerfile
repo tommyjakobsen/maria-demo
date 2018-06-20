@@ -1,4 +1,4 @@
-FROM kstaken/apache2
+FROM tommyjakobsen/maria-demo
 
 MAINTAINER Kimbro Staken version: 0.1
 
