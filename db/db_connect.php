@@ -12,3 +12,4 @@ $link = mysql_connect('localhost', '$username', '$password')
    or die('Could not connect: ' . mysql_error());
 //echo 'Connected successfully';
 mysql_select_db('$database') or die('Could not select database');
+
