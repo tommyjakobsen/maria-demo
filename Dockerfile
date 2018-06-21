@@ -41,9 +41,9 @@ RUN apk add git  bash nginx ca-certificates && \
 RUN git clone https://github.com/tommyjakobsen/maria-demo.git /data/htdocks/maria
 ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/nginx.conf /etc/nginx/
 ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/php-fpm.conf /etc/php/
-ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/default.conf /etc/nginx/conf.d/
-ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/run.sh .
-RUN chmod +x /alpine/files/run.sh
+ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/default.conf /etc/nginx/conf.d/
+ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/run.sh .
+RUN chmod +x ./run.sh
 
 EXPOSE 80
 WORKDIR /data/htdocs
