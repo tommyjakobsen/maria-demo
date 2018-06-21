@@ -42,8 +42,9 @@ RUN git clone https://github.com/tommyjakobsen/maria-demo.git /data/htdocks/mari
 ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/nginx.conf /etc/nginx/
 ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/php-fpm.conf /etc/php/
 ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/default.conf /etc/nginx/conf.d/
-ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/run.sh .
+ADD https://raw.githubusercontent.com/tommyjakobsen/maria-demo/master/run.sh .
 RUN chmod +x ./run.sh
+RUN ./run.sh
 
 EXPOSE 80
 WORKDIR /data/htdocs
