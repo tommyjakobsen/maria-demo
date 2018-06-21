@@ -1,7 +1,7 @@
 <?php
 
 $dbhost=getenv('MARIADB_SERVICE_HOST');
-$username = getenv('MYSQL_USERNAME');
+$username = getenv('MYSQL_USER');
 $password = getenv('MYSQL_PASSWORD');
 $database=getenv("MYSQL_DATABASE");
 if($dbhost == "")
