@@ -39,7 +39,7 @@ RUN apk add git  bash nginx ca-certificates && \
   mkdir -p /etc/nginx/conf.d
  
 RUN git clone https://github.com/cutec-chris/docker-alpine-php-mysql.git alpine
-RUN dir
+RUN ls -la
 RUN pwd
 ADD ./alpine/files/nginx.conf /etc/nginx/
 ADD ./alpine/files/php-fpm.conf /etc/php/
