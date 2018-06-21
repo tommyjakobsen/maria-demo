@@ -50,4 +50,4 @@ RUN git clone https://github.com/tommyjakobsen/maria-demo.git /data/htdocks/mari
 WORKDIR /data/htdocs
 
 VOLUME ["/data/htdocs", "/data/logs", "/var/lib/mysql"]
-CMD ["/run.sh"]
+#CMD ["/run.sh"]
