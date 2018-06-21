@@ -34,22 +34,18 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposit
     php7-fpm \
     php7-ctype 
     
-RUN apk add git mysql mysql-client bash nginx ca-certificates && \
+RUN apk add git  bash nginx ca-certificates && \
   apk add -u musl && \
-  mkdir -p /var/lib/mysql && \
-  mkdir -p /etc/mysql/conf.d && \
-  mkdir -p /etc/nginx/conf.d && \
-  mkdir -p /var/run/mysql/ 
-
+  mkdir -p /etc/nginx/conf.d
+ 
+RUN git clone https://github.com/cutec-chris/docker-alpine-php-mysql.git
 ADD files/nginx.conf /etc/nginx/
 ADD files/php-fpm.conf /etc/php/
-ADD files/my.cnf /etc/mysql/
 ADD files/default.conf /etc/nginx/conf.d/
 ADD files/run.sh /
 RUN chmod +x /run.sh
 
 EXPOSE 80
-EXPOSE 3306
 WORKDIR /data/htdocs
-VOLUME ["/data/htdocs", "/data/logs", "/var/lib/mysql", "/etc/mysql/conf.d/"]
-CMD ["/run.sh"]
+VOLUME ["/data/htdocs", "/data/logs", "/var/lib/mysql"]
+#CMD ["/run.sh"]
