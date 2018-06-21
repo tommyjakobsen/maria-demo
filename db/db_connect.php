@@ -1,6 +1,6 @@
 <?php
 //Fetch openshift variables
-$dbhost = getenv('OPENSHIFT_MYSQL_DB_HOST'); //sample host 
+$dbhost = getenv('OPENSHIFT_MYSQL_DB_HOST');|
 $username = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
 $password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
 $database=getenv("mariadb");
@@ -13,3 +13,5 @@ $link = mysql_connect('$dbhost', '$username', '$password')
 //echo 'Connected successfully';
 mysql_select_db('$database') or die('Could not select database');
 
+
+?>
