@@ -44,11 +44,10 @@ ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master
 ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/default.conf /etc/nginx/conf.d/
 ADD https://raw.githubusercontent.com/tommyjakobsen/maria-demo/master/run.sh .
 RUN chmod +x ./run.sh
-RUN ./run.sh
 RUN git clone https://github.com/tommyjakobsen/maria-demo.git /data/htdocks/maria
 
-EXPOSE 80
+#EXPOSE 80
 WORKDIR /data/htdocs
 
 VOLUME ["/data/htdocs", "/data/logs", "/var/lib/mysql"]
-#CMD ["/run.sh"]
+CMD ["/run.sh"]
