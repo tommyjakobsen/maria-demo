@@ -38,17 +38,15 @@ RUN apk add git  bash nginx ca-certificates && \
   apk add -u musl && \
   mkdir -p /etc/nginx/conf.d
  
-RUN git clone https://github.com/cutec-chris/docker-alpine-php-mysql.git alpine
-RUN ls -la
-RUN pwd
-ADD ./alpine/files/nginx.conf /etc/nginx/
-ADD ./alpine/files/php-fpm.conf /etc/php/
-ADD ./alpine/files/default.conf /etc/nginx/conf.d/
-ADD ./alpine/files/run.sh .
-RUN chmod +x ./run.sh
+RUN git clone https://github.com/tommyjakobsen/maria-demo.git /data/htdocks/maria
+ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/nginx.conf /etc/nginx/
+ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/files/php-fpm.conf /etc/php/
+ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/default.conf /etc/nginx/conf.d/
+ADD https://raw.githubusercontent.com/cutec-chris/docker-alpine-php-mysql/master/run.sh .
+RUN chmod +x /alpine/files/run.sh
 
 EXPOSE 80
 WORKDIR /data/htdocs
-RUN git clone https://github.com/tommyjakobsen/maria-demo.git /data/htdocks/maria
+
 VOLUME ["/data/htdocs", "/data/logs", "/var/lib/mysql"]
 #CMD ["/run.sh"]
