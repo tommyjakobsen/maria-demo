@@ -1,4 +1,4 @@
-FROM kstaken/apache2
+FROM php
 
 MAINTAINER Tommy Jakobsen version: 0.1
 RUN deb http://httpredir.debian.org/debian wheezy main
