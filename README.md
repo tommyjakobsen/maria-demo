@@ -27,6 +27,7 @@ set pwd=<password>
 set db=<db-name>
 set phpapp=maria-demo
 set user=<db-username>
+set blowfish_secret=<random string (min 30 char)>
 echo on
 
 oc new-project %project%
@@ -47,6 +48,12 @@ oc.exe env dc %phpapp% MYSQL_DATABASE="%db%"
 
 REM exposing service through route
 oc expose svc/%phpapp%
+
+REM Adding phpMyAdmin for managing the mariadb. use rootpwd to create db's and give access to user 
+oc new-app --image-stream=php:7.1 https://github.com/tommyjakobsen/phpmyadmin.git
+REM Exposing the service
+oc expose svc/phpmyadmin
+oc.exe env dc %phpapp% BLOWFISH="%blowfish_secret%"
 ```
 
 
