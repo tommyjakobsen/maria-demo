@@ -15,9 +15,18 @@ class mySql{
 
         function query($sql){
 				//GET home folder
-			$homefolder=getenv('APP_ROOT);
-               
-                        include "$homefolder/db/db_connect.php";
+			$homefolder=getenv('APP_ROOT');
+               $sapi_type = php_sapi_name();
+-
+-                if(preg_match('/cli/', $sapi_type))
+-                        {
+-                        exit(1);
+-                        }else{
++               
+                         include "$homefolder/db/db_connect.php";
+-                        }
++             
+ 
              
 
 	
