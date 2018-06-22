@@ -1,29 +1,47 @@
 <?php
 
-$dbhost=getenv('MARIADB_SERVICE_HOST');
-$username = getenv('MYSQL_USER');
-$password = getenv('MYSQL_PASSWORD');
-$database=getenv("MYSQL_DATABASE");
-if($dbhost == "")
-        {
 
-        echo "<font color=red> No DB or environment variables created in this openshift project....</font>";
-         echo "Need:<br><b>MYSQL_DB_HOST<\b><br><b>MYSQL_USERNAME<\b><br><b>MYSQL_PASSWORD<\b><br><b>MYSQL_DATABASE<\b>";
-        exit(1);
-        }
+$structure = './setup';
+$sqlfile="world.sql.gz";
+if (is_dir($structure)){
 
-$link = mysqli_connect("$dbhost", "$username", "$password", "$database");
+echo "<font color=red>Setup has already run...!</font>";
+exit(0);
+}
+// To create the nested structure, the $recursive parameter
+// to mkdir() must be specified.
 
-if (!$link) {
-    echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    exit;
+if (!mkdir($structure, 0777, true)) {
+    die('Failed to create folders...');
+}
+//lazy at this point. should of course used php-curl
+shell_exec("curl https://downloads.mysql.com/docs/world.sql.gz --output $structure/$sqlfile");
+
+$file_name="$structure/$sqlfile";
+
+$buffer_size = 4096; // read 4kb at a time
+$out_file_name = str_replace('.gz', '', $file_name);
+
+// Open our files (in binary mode)
+$file = gzopen($file_name, 'rb');
+$out_file = fopen($out_file_name, 'wb');
+
+// Keep repeating until the end of the input file
+while (!gzeof($file)) {
+    // Read buffer-size bytes
+    // Both fwrite and gzread and binary-safe
+    fwrite($out_file, gzread($file, $buffer_size));
 }
 
-//DEBUG:
-//echo "Success: A proper connection to MySQL was made! The $database database is great." . PHP_EOL;
-//echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
+// Files are done, close files
+fclose($out_file);
+gzclose($file);
+
+//Deleting the gz-file
+unlink("$structure/$sqlfile");
+
+//Running SQL to populate the db
+require_once './db/db_connect.php';
 
 
 ?>
