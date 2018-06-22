@@ -21,8 +21,9 @@ if (!$link) {
     exit;
 }
 
-echo "Success: A proper connection to MySQL was made! The $database database is great." . PHP_EOL;
-echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
+//DEBUG:
+//echo "Success: A proper connection to MySQL was made! The $database database is great." . PHP_EOL;
+//echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
 
 
 ?>
