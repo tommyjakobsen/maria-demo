@@ -15,7 +15,7 @@ class mySql{
 
         function query($sql){
 				//GET home folder
-			$homefolder=getenv('APP_ROOT');
+			$homefolder=getenv('APP_DATA');
                $sapi_type = php_sapi_name();
 
                 if(preg_match('/cli/', $sapi_type))
