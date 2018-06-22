@@ -16,25 +16,20 @@ class mySql{
         function query($sql){
 				//GET home folder
 			$homefolder=getenv('APP_ROOT);
-                $sapi_type = php_sapi_name();
-
-                if(preg_match('/cli/', $sapi_type))
-                        {
-                        exit(1);
-                        }else{
+               
                         include "$homefolder/db/db_connect.php";
-                        }
+             
 
 	
 		
 
         
        if ($result = $mysqli->query("$sql")) {
-    printf("Select returned %d rows.\n", $result->num_rows);
-
+   //printf("Select returned %d rows.\n", $result->num_rows);
+	$res=$result;
     /* free result set */
     $result->close();
-            return $result;
+            return $res;
 
             }
 
