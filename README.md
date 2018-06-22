@@ -27,6 +27,7 @@ set pwd=<password>
 set db=<db-name>
 set phpapp=maria-demo
 set user=<db-username>
+set phpmyadminapp=phpmyadmin
 set blowfish_secret=<random string (min 30 char)>
 echo on
 
@@ -53,7 +54,7 @@ REM Adding phpMyAdmin for managing the mariadb. use rootpwd to create db's and g
 oc new-app --image-stream=php:7.1 https://github.com/tommyjakobsen/phpmyadmin.git
 REM Exposing the service
 oc expose svc/phpmyadmin
-oc.exe env dc %phpapp% BLOWFISH="%blowfish_secret%"
+oc.exe env dc %phpmyadminapp% BLOWFISH="%blowfish_secret%"
 ```
 
 
