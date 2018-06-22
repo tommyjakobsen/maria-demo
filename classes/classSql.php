@@ -33,7 +33,7 @@ class mySql{
 		
 
         
-       if (!mysqli_query($link, $query)) { //if the query fails find the error
+       if (!mysqli_query($link, $sql)) { //if the query fails find the error
     echo mysqli_error($link);
 	}
 
