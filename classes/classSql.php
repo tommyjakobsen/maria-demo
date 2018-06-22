@@ -33,13 +33,9 @@ class mySql{
 		
 
         
-       if ($result = $link->query("$sql")) {
-   //printf("Select returned %d rows.\n", $result->num_rows);
-	$res=$result;
-    /* free result set */
-    $result->close();
-	       $link->close();
-            return $res;
+       if (!mysqli_query($link, $query)) { //if the query fails find the error
+    echo mysqli_error($link);
+	}
 
             }
 
