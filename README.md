@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your ope
 You have to setup minishift on windows with s2i php:5.6 and mariadb , using f.instance virtualbox or such and get the access token
 
 
-### Installing application with bat script
+### Deployment
 
 A step by step series of examples that tell you how to get a development env running
 
