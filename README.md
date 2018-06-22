@@ -1,6 +1,6 @@
 # maria-demo
 
-This is a test project to create two pods on minishift/openshift. One running mariadb and one running the php frontend.
+This is a test project to create three pods on minishift/openshift. One running mariadb, one running the php frontend and one running phpAdmin.
 Variables to connect is exposed to the php-container, so it can logon the database
 
 ## Getting Started
