@@ -30,12 +30,14 @@ class mySql{
              
 
 	
-		
+		echo strlength($sql)."\n\n";
 
         
        if (!mysqli_query($link, $sql)) { //if the query fails find the error
     echo mysqli_error($link);
-	}
+	}else{
+	echo "Sql was running fine....";       
+       }
 
           
 
