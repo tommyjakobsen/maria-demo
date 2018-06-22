@@ -33,7 +33,7 @@ class mySql{
 		
 
         
-       if ($result = $mysqli->query("$sql")) {
+       if ($result = mysqli->query("$sql")) {
    //printf("Select returned %d rows.\n", $result->num_rows);
 	$res=$result;
     /* free result set */
