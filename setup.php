@@ -41,7 +41,15 @@ gzclose($file);
 unlink("$structure/$sqlfile");
 
 //Running SQL to populate the db
-require_once './db/db_connect.php';
+//require_once './db/db_connect.php';
+
+include "./classes/classSql.php";
+
+$newSql=new mySql();
 
 
+$sql=file_get_contents("$out_file_name");
+$result=$newSql->query("$sql");
+
+print_r($result);
 ?>
