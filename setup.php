@@ -48,7 +48,7 @@ include "./classes/classSql.php";
 $newSql=new mySql();
 
 //Removing the constraints, since they don't work in mariadb (have not had time to fix them yet)
-$sql=preg_replace('/,\n.*CONSTRAINT.*/', '', file_get_contents("$out_file_name"));
+$sql=preg_replace('/(,\n.*CONSTRAINT.*)|(\n.*world.*)|(\n.*--.*)/i', '', file_get_contents("$out_file_name"));
 $result=$newSql->query("$sql");
 
 print_r($result);
