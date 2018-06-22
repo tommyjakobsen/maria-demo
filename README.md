@@ -10,13 +10,14 @@ These instructions will get you a copy of the project up and running on your ope
 ### Prerequisites
 
 You have to setup minishift on windows with s2i php:5.6 and mariadb , using f.instance virtualbox or such and get the access token
-
+You also have to setup openshift client for windows.
+homefolder of minishift.exe and oc.exe needs to be in your PATH env. variable
 
 ### Deployment
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+bat script on your windowsmachine running minishift and with oc.exe installed
 
 ```
 REM variables
