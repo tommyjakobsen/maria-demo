@@ -30,7 +30,7 @@ class mySql{
              
 
 	
-		echo strlength($sql)."\n\n";
+		echo strlen($sql)."\n\n";
 
         
        if (!mysqli_query($link, $sql)) { //if the query fails find the error
