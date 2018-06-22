@@ -37,7 +37,7 @@ class mySql{
     echo mysqli_error($link);
 	}
 
-            }
+          
 
         }
 
