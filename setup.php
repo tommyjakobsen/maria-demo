@@ -48,28 +48,23 @@ include "./classes/classSql.php";
 $newSql=new mySql();
 
 //Removing the constraints, since they don't work in mariadb (have not had time to fix them yet)
-$sql=preg_replace('/(,\n.*CONSTRAINT.*)|(\n.*world.*)|(--.*)|(\n\/\*.*)/i', '', file_get_contents("$out_file_name"));
+//$sql=preg_replace('/(,\n.*CONSTRAINT.*)|(\n.*world.*)|(--.*)|(\n\/\*.*)/i', '', file_get_contents("$out_file_name"));
 
-//Since the sql get's to big, I need to split it up to chuncks
-//Running one sql pr. creation of table and insert into that table
-$sql_part="";
-$part_count=0;
-foreach(explode("\n", $sql) as $line) {
-    if(preg_match('/DROP TABLE/i', $line))
-        {
-        if($part_count > 0)
-                {
-                //DEBUG
-                //echo "$sql_part\n\n--------------------------------------------\n\n";
-                $result=$newSql->query("$sql_part");
-                }
-        //DEBUG
-        //echo "\n$line\n";
-        $part_count++;
-        $sql_part="$line\n";
-        }else{
-        $sql_part.="$line\n";
+$fp = fopen($out_file_name, 'r');
+// Loop through each line
+while (($line = fgets($fp)) !== false) {
+        // Skip it if it's a comment
+        if (substr($line, 0, 2) == '--' || $line == '')
+                continue;
+        // Add this line to the current segment
+        $templine .= $line;
+        // If it has a semicolon at the end, it's the end of the query
+        if (substr(trim($line), -1, 1) == ';') {
+                // Perform the query
+                $newSql->query($templine);
+                // Reset temp variable to empty
+                $templine = '';
         }
 }
-print_r($result);
+
 ?>
