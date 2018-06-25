@@ -1,6 +1,6 @@
 <?php
 
-
+$templine="";
 $structure = './setup';
 $sqlfile="world.sql.gz";
 if (is_dir($structure)){
