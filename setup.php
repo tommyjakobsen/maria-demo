@@ -76,6 +76,9 @@ while (($line = fgets($fp)) !== false) {
         }
 }
 echo "Removing files";
+//remove file
+unlink($structure/$out_file_name);
+//remove folder
 rmdir("$structure");
 echo "<font color=green>Done....<br>";
 echo "<meta http-equiv=\"refresh\" content=\"5;url=/index.php\" />";
