@@ -7,6 +7,9 @@ if(!file_exists('./setup'))
 }else{
  
   //Show the statistics
+  include './db/db_connect.php';
+  include './classes/classSql.php';
+  $newSql=new mySql();
 echo "<!DOCTYPE HTML>
 <html>
 <head>
