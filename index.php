@@ -9,6 +9,7 @@ LIMIT 10");
 if(!isset($result->num_rows))
 {
   //Go to setup page....
+  echo "Database not populated. Creation will start...";
   echo "<meta http-equiv=\"refresh\" content=\"5;url=/setup.php\" />";
 }else{
   $OUTPUT="";
