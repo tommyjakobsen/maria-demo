@@ -1,18 +1,19 @@
 <?php
+include './db/db_connect.php';
+  include './classes/classSql.php';
+  $newSql=new mySql();
+ $result=$newSql->query("select * from country
+order by Population DESC
+LIMIT 10");
 
-if(!file_exists('./setup'))
+if($result->num_rows < 2)
 {
   //Go to setup page....
   echo "<meta http-equiv=\"refresh\" content=\"5;url=/setup.php\" />";
 }else{
   $OUTPUT="";
   //Show the statistics
-  include './db/db_connect.php';
-  include './classes/classSql.php';
-  $newSql=new mySql();
- $result=$newSql->query("select * from country
-order by Population DESC
-LIMIT 10");
+  
   
 echo "<!DOCTYPE HTML>
 <html>
@@ -22,7 +23,7 @@ echo "<!DOCTYPE HTML>
     var chart = new CanvasJS.Chart(\"chartContainer\", {
 
       title:{
-        text: \"Top 10 Populated Countries in the World back in the days\"
+        text: \"Top ".$result->num_rows." Populated Countries in the World back in the days\"
       },
       data: [//array of dataSeries
         { //dataSeries object
@@ -34,7 +35,7 @@ echo "<!DOCTYPE HTML>
         $rowcount=0;
         while($row = $result->fetch_assoc()) {
         $rowcount++;
-        if($rowcount < 10)
+        if($rowcount < $result->num_rows)
                 {
                 echo "{ label: \"$row[Name]\", y: $row[Population] },\n";
                 }else{
