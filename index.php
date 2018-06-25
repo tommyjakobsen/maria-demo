@@ -10,6 +10,10 @@ if(!file_exists('./setup'))
   include './db/db_connect.php';
   include './classes/classSql.php';
   $newSql=new mySql();
+ $result=$newSql->query("select country.Name as Name, country.Population as Population from country
+order by Population DESC
+LIMIT 10");
+  
 echo "<!DOCTYPE HTML>
 <html>
 <head>
