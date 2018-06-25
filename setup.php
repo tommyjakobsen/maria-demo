@@ -1,6 +1,9 @@
 <?php
 if (ob_get_level() == 0) ob_start();
-echo "Creating database...<br>";
+echo "Downloading database World example...<br>";
+ ob_flush();
+flush();
+
 $templine="";
 $structure = './setup';
 $sqlfile="world.sql.gz";
@@ -23,6 +26,9 @@ $file_name="$structure/$sqlfile";
 $buffer_size = 4096; // read 4kb at a time
 $out_file_name = str_replace('.gz', '', $file_name);
 
+echo "Decompressing file....<br>";
+ ob_flush();
+flush();
 // Open our files (in binary mode)
 $file = gzopen($file_name, 'rb');
 $out_file = fopen($out_file_name, 'wb');
@@ -50,9 +56,9 @@ $newSql=new mySql();
 
 //Removing the constraints, since they don't work in mariadb (have not had time to fix them yet)
 //$sql=preg_replace('/(,\n.*CONSTRAINT.*)|(\n.*world.*)|(--.*)|(\n\/\*.*)/i', '', file_get_contents("$out_file_name"));
+echo "Parsing the SQL-file and creating tables<br>";
  ob_flush();
 flush();
-
 $fp = fopen($out_file_name, 'r');
 // Loop through each line
 while (($line = fgets($fp)) !== false) {
