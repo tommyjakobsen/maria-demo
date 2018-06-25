@@ -55,7 +55,7 @@ $sql=preg_replace('/(,\n.*CONSTRAINT.*)|(\n.*world.*)|(--.*)|(\n\/\*.*)/i', '', 
 $sql_part="";
 $part_count=0;
 foreach(explode("\n", $sql) as $line) {
-    if(preg_match('/CREATE TABLE/i', $line))
+    if(preg_match('/DROP TABLE/i', $line))
         {
         if($part_count > 0)
                 {
