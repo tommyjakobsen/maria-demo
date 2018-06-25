@@ -10,7 +10,7 @@ if(!file_exists('./setup'))
   include './db/db_connect.php';
   include './classes/classSql.php';
   $newSql=new mySql();
- $result=$newSql->query("select country.Name as Name, country.Population as Population from country
+ $result=$newSql->query("select * from country
 order by Population DESC
 LIMIT 10");
   
@@ -59,6 +59,14 @@ echo "        ]
 <body>
   <div id=\"chartContainer\" style=\"height: 300px; width: 100%;\">
   </div>
+  ";
+  echo "<table border=1 cellspacing=0>";
+  echo "<tr><th color='#abcdef'>Name</th><th color='#abcdef'>Continent</th><th color='#abcdef'>Population</th><th color='#abcdef'>Life Exp.</th><th color='#abcdef'>Government Form</th><th color='#abcdef'>Head of State</th></tr>\n";
+   while($row = $result->fetch_assoc()) {
+    echo "<tr><td>$row[Name]</td><td>$row[Continent]</td><td>$row[Population]</td><td>$row[LifeExpectancy]</td><td>$row[GovernmentForm]</td><td>$row[HeadOfState]</td></tr>\n";
+   }
+  echo "</table>";
+  echo "
 </body>
 </html>";
 }
