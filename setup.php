@@ -79,7 +79,8 @@ echo "Removing files";
 //remove file
 unlink($structure/$out_file_name);
 //remove folder
-rmdir("$structure");
+//rmdir("$structure");
+//not removing the folder to use it for checking if setup has been executed
 echo "<font color=green>Done....<br>";
 echo "<meta http-equiv=\"refresh\" content=\"5;url=/index.php\" />";
 
