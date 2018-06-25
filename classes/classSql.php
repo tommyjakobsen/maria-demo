@@ -34,9 +34,9 @@ class mySql{
 
         
        if (!mysqli_query($link, $sql)) { //if the query fails find the error
-    echo mysqli_error($link);
+    //echo mysqli_error($link);
 	}else{
-	echo "Sql was running fine....";       
+	//echo "Sql was running fine....";       
        }
 
           
