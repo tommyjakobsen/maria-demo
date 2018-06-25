@@ -59,10 +59,12 @@ foreach(explode("\n", $sql) as $line) {
         {
         if($part_count > 0)
                 {
-                echo "$sql_part\n\n--------------------------------------------\n\n";
+                //DEBUG
+                //echo "$sql_part\n\n--------------------------------------------\n\n";
                 $result=$newSql->query("$sql_part");
                 }
-        echo "\n$line\n";
+        //DEBUG
+        //echo "\n$line\n";
         $part_count++;
         $sql_part="$line\n";
         }else{
