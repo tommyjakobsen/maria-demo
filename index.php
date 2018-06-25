@@ -1,12 +1,12 @@
 <?php
 include './db/db_connect.php';
-  include './classes/classSql.php';
-  $newSql=new mySql();
- $result=$newSql->query("select * from country
+include './classes/classSql.php';
+$newSql=new mySql();
+$result=$newSql->query("seelect * from country
 order by Population DESC
 LIMIT 10");
 
-if($result->num_rows < 2)
+if(!isset($result->num_rows))
 {
   //Go to setup page....
   echo "<meta http-equiv=\"refresh\" content=\"5;url=/setup.php\" />";
