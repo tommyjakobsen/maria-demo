@@ -2,7 +2,7 @@
 include './db/db_connect.php';
 include './classes/classSql.php';
 $newSql=new mySql();
-$result=$newSql->query("seelect * from country
+$result=$newSql->query("select * from country
 order by Population DESC
 LIMIT 15");
 
