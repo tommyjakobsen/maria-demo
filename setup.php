@@ -1,5 +1,6 @@
 <?php
-
+if (ob_get_level() == 0) ob_start();
+echo "Creating database...<br>";
 $templine="";
 $structure = './setup';
 $sqlfile="world.sql.gz";
@@ -49,6 +50,8 @@ $newSql=new mySql();
 
 //Removing the constraints, since they don't work in mariadb (have not had time to fix them yet)
 //$sql=preg_replace('/(,\n.*CONSTRAINT.*)|(\n.*world.*)|(--.*)|(\n\/\*.*)/i', '', file_get_contents("$out_file_name"));
+ ob_flush();
+flush();
 
 $fp = fopen($out_file_name, 'r');
 // Loop through each line
@@ -66,5 +69,5 @@ while (($line = fgets($fp)) !== false) {
                 $templine = '';
         }
 }
-
+echo "<font color=green>Done....<br>";
 ?>
