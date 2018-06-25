@@ -77,7 +77,7 @@ while (($line = fgets($fp)) !== false) {
 }
 echo "Removing files";
 //remove file
-unlink($structure/$out_file_name);
+unlink($out_file_name);
 //remove folder
 //rmdir("$structure");
 //not removing the folder to use it for checking if setup has been executed
