@@ -4,7 +4,7 @@ include './classes/classSql.php';
 $newSql=new mySql();
 $result=$newSql->query("seelect * from country
 order by Population DESC
-LIMIT 10");
+LIMIT 15");
 
 if(!isset($result->num_rows))
 {
