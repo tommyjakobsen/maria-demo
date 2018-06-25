@@ -5,7 +5,7 @@ if(!file_exists('./setup'))
   //Go to setup page....
   echo "<meta http-equiv=\"refresh\" content=\"5;url=/setup.php\" />";
 }else{
- 
+  $OUTPUT="";
   //Show the statistics
   include './db/db_connect.php';
   include './classes/classSql.php';
@@ -22,7 +22,7 @@ echo "<!DOCTYPE HTML>
     var chart = new CanvasJS.Chart(\"chartContainer\", {
 
       title:{
-        text: \"Top 10 Populated Countries in the World\"
+        text: \"Top 10 Populated Countries in the World back in the days\"
       },
       data: [//array of dataSeries
         { //dataSeries object
@@ -41,7 +41,7 @@ echo "<!DOCTYPE HTML>
                 echo "{ label: \"$row[Name]\", y: $row[Population] }\n";
 
                 }
-
+$OUTPUT.="<tr><td>$row[Name]</td><td>$row[Continent]</td><td>$row[Population]</td><td>$row[LifeExpectancy]</td><td>$row[GovernmentForm]</td><td>$row[HeadOfState]</td></tr>\n";
         }
 
 
@@ -60,11 +60,9 @@ echo "        ]
   <div id=\"chartContainer\" style=\"height: 300px; width: 100%;\">
   </div>
   ";
-  echo "<table border=1 cellspacing=0>";
+  echo "<table width=100% border=1 cellspacing=0>";
   echo "<tr><th color='#abcdef'>Name</th><th color='#abcdef'>Continent</th><th color='#abcdef'>Population</th><th color='#abcdef'>Life Exp.</th><th color='#abcdef'>Government Form</th><th color='#abcdef'>Head of State</th></tr>\n";
-   while($row = $result->fetch_assoc()) {
-    echo "<tr><td>$row[Name]</td><td>$row[Continent]</td><td>$row[Population]</td><td>$row[LifeExpectancy]</td><td>$row[GovernmentForm]</td><td>$row[HeadOfState]</td></tr>\n";
-   }
+  echo "$OUTPUT";
   echo "</table>";
   echo "
 </body>
