@@ -2,7 +2,7 @@
 include './db/db_connect.php';
 include './classes/classSql.php';
 $newSql=new mySql();
- if(isset($_GET["type]))
+ if(isset($_GET["type"]))
       {
       $type=$_GET["type"];
       }else{
