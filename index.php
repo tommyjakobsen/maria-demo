@@ -1,7 +1,7 @@
 <?php
 include './db/db_connect.php';
 include './classes/classSql.php';
-$limit=10;
+$limit=20;
 
 $newSql=new mySql();
  if(isset($_GET["type"]))
