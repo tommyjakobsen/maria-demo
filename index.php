@@ -11,7 +11,7 @@ $newSql=new mySql();
       }
       
 switch ($type) {
-    case "Population:
+    case "Population":
         $result=$newSql->query("select * from country
         order by Population DESC
         LIMIT 15");
