@@ -82,8 +82,17 @@ echo "        ]
   </script>
   <script type=\"text/javascript\" src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>
 </head>
-<body>
-  <div id=\"chartContainer\" style=\"height: 300px; width: 100%;\">
+<body>";
+echo "<center><FORM action='./index.php' method=GET>";
+$counter=0;
+echo "<select name='systemnumber' onchange='this.form.submit()'>";
+echo "<option value='Population'>Population</option>";
+echo "<option value='LifeExpectancy'>LifeExpectancy</option>";
+echo "<option value='SurfaceArea'>SurfaceArea</option>";
+echo "</select>";
+echo "</form>";
+echo "<br></center>";
+echo "<div id=\"chartContainer\" style=\"height: 300px; width: 100%;\">
   </div>
   ";
   echo "<table width=100% border=1 cellspacing=0>";
