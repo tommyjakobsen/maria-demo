@@ -2,20 +2,40 @@
 include './db/db_connect.php';
 include './classes/classSql.php';
 $newSql=new mySql();
-$result=$newSql->query("select * from country
-order by Population DESC
-LIMIT 15");
+ if(isset($_GET["type]))
+      {
+      $type=$_GET["type"];
+      }else{
+       //default type is sort by population
+      $type="Population";
+      }
+      
+switch ($type) {
+    case "Population:
+        $result=$newSql->query("select * from country
+        order by Population DESC
+        LIMIT 15");
+        break;
+    case 1:
+       echo "case 2";
+        break;
+    case 2:
+      echo "case 3";
+        break;
+}
+
+
 
 if(!isset($result->num_rows))
 {
   //Go to setup page....
-  echo "Database not populated. Creation will start...";
-  echo "<meta http-equiv=\"refresh\" content=\"5;url=/setup.php\" />";
+  echo "<font color=red>Database not populated. Creation will start...</font>";
+  echo "<meta http-equiv=\"refresh\" content=\"2;url=/setup.php\" />";
 }else{
+ 
   $OUTPUT="";
   //Show the statistics
-  
-  
+   
 echo "<!DOCTYPE HTML>
 <html>
 <head>
@@ -24,7 +44,7 @@ echo "<!DOCTYPE HTML>
     var chart = new CanvasJS.Chart(\"chartContainer\", {
 
       title:{
-        text: \"Top ".$result->num_rows." Populated Countries in the World back in the days\"
+        text: \"Top ".$result->num_rows." $type for Countries in the World back in the days\"
       },
       data: [//array of dataSeries
         { //dataSeries object
