@@ -10,6 +10,8 @@ $newSql=new mySql();
       $type="Population";
       }
       
+
+//Don't need a case, but adding it if I want different functionality inside in the future
 switch ($type) {
     case "Population":
         $result=$newSql->query("select * from country
