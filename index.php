@@ -1,6 +1,8 @@
 <?php
 include './db/db_connect.php';
 include './classes/classSql.php';
+$limit=10;
+
 $newSql=new mySql();
  if(isset($_GET["type"]))
       {
@@ -16,17 +18,17 @@ switch ($type) {
     case "Population":
         $result=$newSql->query("select * from country
         order by $type DESC
-        LIMIT 15");
+        LIMIT $limit");
         break;
     case "LifeExpectancy":
         $result=$newSql->query("select * from country
         order by $type DESC
-        LIMIT 15");
+        LIMIT $limit");
         break;
     case "SurfaceArea":
         $result=$newSql->query("select * from country
         order by $type DESC
-        LIMIT 15");
+        LIMIT $limit");
         break;
 }
 
