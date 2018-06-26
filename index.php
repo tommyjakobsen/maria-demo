@@ -86,7 +86,7 @@ echo "        ]
   </script>
   <script type=\"text/javascript\" src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>
 </head>
-<body bgcolor='#ff0000'>";
+<body bgcolor='#eeeeee'>";
 echo "<center><FORM action='./index.php' method=GET>";
 $counter=0;
 echo "<select name='type' onchange='this.form.submit()'>";
