@@ -86,7 +86,7 @@ echo "        ]
   </script>
   <script type=\"text/javascript\" src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>
 </head>
-<body>";
+<body bgcolor='#ff0000'>";
 echo "<center><FORM action='./index.php' method=GET>";
 $counter=0;
 echo "<select name='type' onchange='this.form.submit()'>";
@@ -101,7 +101,7 @@ echo "<div id=\"chartContainer\" style=\"height: 300px; width: 100%;\">
   </div>
   ";
   echo "<table width=100% border=1 cellspacing=0>";
-  echo "<tr><th color='#abcdef'>Name</th><th color='#abcdef'>Continent</th><th color='#abcdef'>Population</th><th color='#abcdef'>Life Exp.</th><th color='#abcdef'>Government Form</th><th color='#abcdef'>Head of State</th></tr>\n";
+  echo "<tr><th bgcolor='#abcdef'>Name</th><th bgcolor='#abcdef'>Continent</th><th bgcolor='#abcdef'>Population</th><th bgcolor='#abcdef'>Life Exp.</th><th bgcolor='#abcdef'>Government Form</th><th bgcolor='#abcdef'>Head of State</th></tr>\n";
   echo "$OUTPUT";
   echo "</table>";
   echo "
