@@ -13,7 +13,7 @@ $newSql=new mySql();
 switch ($type) {
     case "Population":
         $result=$newSql->query("select * from country
-        order by Population DESC
+        order by $type DESC
         LIMIT 15");
         break;
     case "LifeExpectancy":
