@@ -21,8 +21,10 @@ switch ($type) {
         order by $type DESC
         LIMIT 15");
         break;
-    case 2:
-      echo "case 3";
+    case "SurfaceArea":
+        $result=$newSql->query("select * from country
+        order by $type DESC
+        LIMIT 15");
         break;
 }
 
