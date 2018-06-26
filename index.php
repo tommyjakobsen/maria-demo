@@ -16,8 +16,10 @@ switch ($type) {
         order by Population DESC
         LIMIT 15");
         break;
-    case 1:
-       echo "case 2";
+    case "LifeExpectancy":
+        $result=$newSql->query("select * from country
+        order by $type DESC
+        LIMIT 15");
         break;
     case 2:
       echo "case 3";
@@ -58,9 +60,9 @@ echo "<!DOCTYPE HTML>
         $rowcount++;
         if($rowcount < $result->num_rows)
                 {
-                echo "{ label: \"$row[Name]\", y: $row[Population] },\n";
+                echo "{ label: \"$row[Name]\", y: $row[$type] },\n";
                 }else{
-                echo "{ label: \"$row[Name]\", y: $row[Population] }\n";
+                echo "{ label: \"$row[Name]\", y: $row[$type] }\n";
 
                 }
 $OUTPUT.="<tr><td>$row[Name]</td><td>$row[Continent]</td><td>$row[Population]</td><td>$row[LifeExpectancy]</td><td>$row[GovernmentForm]</td><td>$row[HeadOfState]</td></tr>\n";
