@@ -86,6 +86,7 @@ echo "        ]
 echo "<center><FORM action='./index.php' method=GET>";
 $counter=0;
 echo "<select name='systemnumber' onchange='this.form.submit()'>";
+ echo "<option value='' selected>Select report...</option>";
 echo "<option value='Population'>Population</option>";
 echo "<option value='LifeExpectancy'>LifeExpectancy</option>";
 echo "<option value='SurfaceArea'>SurfaceArea</option>";
