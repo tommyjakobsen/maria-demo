@@ -13,7 +13,7 @@ error_reporting(E_ALL);
   */
 class chaos{ 
 
-        function slow{
+        function slow(){
           $rand_slowness=rand(1,5);
           sleep($rand_slowness);
           $result="Zzzzzz......<br>I slept for $rand_slowness seconds....";
@@ -22,7 +22,7 @@ class chaos{
 
         }
 
-        function error{
+        function error(){
           sleep(1);
           exit(1);
           $result="You will never reach this line..."
