@@ -19,7 +19,7 @@ if (!mkdir($structure, 0777, true)) {
     die('Failed to create folders...');
 }
 //lazy at this point. should of course used php-curl
-shell_exec("curl https://downloads.mysql.com/docs/world.sql.gz --output $structure/$sqlfile");
+shell_exec("curl https://downloads.mysql.com/docs/world-db.tar.gz --output $structure/$sqlfile");
 
 $file_name="$structure/$sqlfile";
 
