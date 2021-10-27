@@ -95,7 +95,7 @@ void 0,"dtjsagent"))}var pa=d.location.href;0===h&&-1!==p(pa,"_DT_RENDERING_")&&
 
 
 
-<? echo "<script type=\"text/javascript\">
+<?php echo "<script type=\"text/javascript\">
   window.onload = function () {
     var chart = new CanvasJS.Chart(\"chartContainer\", {
 
