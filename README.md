@@ -20,6 +20,7 @@ A step by step series of examples that tell you how to get a development env run
 bat script on your windowsmachine running minishift and with oc.exe installed
 
 ```
+#### WINDOWS
 REM variables
 echo off
 set project=<project name you want to use>
@@ -55,6 +56,33 @@ oc new-app --image-stream=php:7.1 https://github.com/tommyjakobsen/phpmyadmin.gi
 REM Exposing the service
 oc expose svc/phpmyadmin
 oc.exe env dc %phpmyadminapp% BLOWFISH="%blowfish_secret%"
+
+#### LINUX
+
+project=<project-name>
+pwd=<db-pwd>
+db=mariadb
+phpapp=maria-demo
+user=<db-user>
+phpmyadminapp=phpmyadmin
+blowfish_secret=<min 30 characters...>
+
+./oc project $project
+
+./oc new-app    -e MYSQL_USER=$user     -e MYSQL_PASSWORD=$pwd     -e MYSQL_DATABASE=$db  --image-stream=mariadb:latest
+
+./oc new-app --image-stream=php:7.2-ubi8 https://github.com/tommyjakobsen/maria-demo.git
+
+./oc set env  deployment maria-demo MYSQL_PASSWORD="$pwd"
+./oc set env deployment $phpapp MYSQL_USER="$user"
+./oc set env deployment $phpapp MYSQL_DATABASE="$db"
+
+./oc expose svc/$phpapp
+
+./oc new-app --image-stream=php:7.2-ubi8 https://github.com/tommyjakobsen/phpmyadmin.git
+./oc expose svc/phpmyadmin
+./oc set env deployment $phpmyadminapp BLOWFISH="$blowfish_secret"
+
 ```
 
 
